@@ -4,12 +4,12 @@ $("#currentDay").text(moment().format("dddd, MMMM Do"));
 // Creates every elements inside the time block
 function createTimeBlock(time, meridian) {
     let timeBlockEl = $("<div>", {id: "block-" + time + meridian, "class": "row time-block"});
-    let hourEl = $("<div>", {"class": "hour col-1 m-auto"});
+    let hourEl = $("<div>", {"class": "hour col-3 col-sm-2 col-md-1 m-auto"});
     // Check if the current time is 12am or 12pm
     (time === 0) ? hourEl.text("12" + meridian) : hourEl.text(time + meridian);
-    let descriptionEl = $("<textarea>", {"class": "description col-10"});
+    let descriptionEl = $("<textarea>", {"class": "description col-6 col-sm-8 col-md-10"});
     descriptionEl.addClass(descriptionColor(time, meridian)); 
-    let saveBtnEl = $("<div>", {"class": "saveBtn col-1 m-auto fa fa-save"});
+    let saveBtnEl = $("<div>", {"class": "saveBtn col-3 col-sm-2 col-md-1 m-auto fa fa-save"});
 
     timeBlockEl.append(hourEl);
     timeBlockEl.append(descriptionEl);
