@@ -9,6 +9,7 @@ function createTimeBlock(time, meridian) {
     (time === 0) ? hourEl.text("12" + meridian) : hourEl.text(time + meridian);
     let descriptionEl = $("<textarea>", {"class": "description col-6 col-sm-8 col-md-10"});
     descriptionEl.addClass(descriptionColor(time, meridian)); 
+    descriptionContent(time, meridian);
     let saveBtnEl = $("<div>", {"class": "saveBtn col-3 col-sm-2 col-md-1 m-auto fa fa-save"});
 
     timeBlockEl.append(hourEl);
@@ -36,8 +37,14 @@ function descriptionColor(time, meridian) {
     }
 }
 
+// Check the local storage if there is content inside some description fields already
+function descriptionContent() {
+
+}
+
 // Initialize the webpage by rendering all time blocks
 function init() {
+    localStorage.clear();
     // For 12am to 11am
     for (let i = 0; i < 12; i++) {
         createTimeBlock(i, "AM");
@@ -46,5 +53,10 @@ function init() {
     for (let i = 0; i < 12; i++) {
         createTimeBlock(i, "PM");
     }
+
+    // Whenever a save button is clicked, save the corresponding description field content to local storage
+    $(".saveBtn").click(function(){
+        localStorage.setItem($(this).parent().attr("id"), JSON.stringify($(this).parent().find(".description").val()));
+    });
 }
 init();
