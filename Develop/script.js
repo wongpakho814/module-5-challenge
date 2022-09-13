@@ -59,6 +59,7 @@ function init() {
     // Whenever a save button is clicked, save the corresponding description field content to local storage
     $(".saveBtn").click(function(){
         localStorage.setItem($(this).parent().attr("id"), JSON.stringify($(this).parent().find(".description").val()));
+        alert("Item saved!");
     });
 }
 init();
