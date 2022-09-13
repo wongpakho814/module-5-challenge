@@ -5,7 +5,7 @@ $("#currentDay").text(moment().format("dddd, MMMM Do"));
 function createTimeBlock(time, meridian) {
     let timeBlockEl = $("<div>", {id: "block-" + time + meridian, "class": "row time-block"});
     let hourEl = $("<div>", {"class": "hour col-3 col-sm-2 col-md-1 m-auto"});
-    // Check if the current time is 12am or 12pm
+    // Check if the current time is 12am or 12pm (for future extension)
     (time === 0) ? hourEl.text("12" + meridian) : hourEl.text(time + meridian);
     let descriptionEl = $("<textarea>", {"class": "description col-6 col-sm-8 col-md-10"});
     descriptionEl.addClass(descriptionColor(time, meridian)); 
@@ -47,12 +47,12 @@ function descriptionContent(time, meridian) {
 
 // Initialize the webpage by rendering all time blocks
 function init() {
-    // For 12am to 11am
-    for (let i = 0; i < 12; i++) {
+    // For 9am to 11am
+    for (let i = 9; i < 12; i++) {
         createTimeBlock(i, "AM");
     }
-    // For 12pm to 11pm
-    for (let i = 0; i < 12; i++) {
+    // For 12pm to 5pm
+    for (let i = 0; i < 6; i++) {
         createTimeBlock(i, "PM");
     }
 
